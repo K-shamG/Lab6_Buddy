@@ -32,7 +32,7 @@ public class AddressBookTest {
 	}
 	
 	@Test
-	public void testAddBuddy() {
+	public void testAddBuddyAndSize() {
 		assertEquals("Size of address book should now be 3", 3, addressBook.size());
 	}
 	
@@ -56,9 +56,7 @@ public class AddressBookTest {
 	
 	@Test
 	public void testClear(){
-		System.out.println(addressBook.size());
 		addressBook.clear();
-		System.out.println(addressBook.size());
 		assertEquals("AddressBook should be empty", 0, addressBook.size());
 	}
 

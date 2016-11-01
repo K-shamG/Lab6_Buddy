@@ -40,7 +40,7 @@ public class BuddyInfoTest {
 	
 	@Test
 	public void testToString() {
-		assertEquals("Should say Hello test", "Hello test", buddyInfo.toString());
+		assertEquals("Should say 'Hello test'", "Hello test", buddyInfo.toString());
 	}
 	
 	@Test
@@ -50,6 +50,9 @@ public class BuddyInfoTest {
 		
 		buddyInfo.setAge(12);
 		assertFalse("Should be false", buddyInfo.isOver18());
+		
+		buddyInfo.setAge(18);
+		assertTrue("Should be true", buddyInfo.isOver18());
 	}
 
 }
