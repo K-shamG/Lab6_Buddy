@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 
 public class AddressBook {
@@ -28,10 +31,37 @@ public class AddressBook {
 		buddyInfo.clear();
 	}
 	
+	public StringWriter export() throws IOException {
+		StringWriter sw = new StringWriter(); 
+		BufferedWriter w = new BufferedWriter(sw);
+		
+		for(BuddyInfo b: buddyInfo) {
+			w.write(b.toString() + "\n");
+		}
+		w.flush(); 
+		return sw; 
+	}
+	
 	public static void main(String [] args) {
 		BuddyInfo buddy = new BuddyInfo("Kshamina", "ottawa", 6666666);
+		BuddyInfo b2 = new BuddyInfo("Bobby", "toronto", 444444444);
+		
+		BuddyInfo testImport = BuddyInfo.imporT(buddy.toString());
+		
 		AddressBook book = new AddressBook(); 
 		book.addBuddy(buddy);
-		book.removeBuddy(0);
+		book.addBuddy(b2);
+		book.addBuddy(testImport);
+		
+		try {
+			System.out.println(book.export());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		
+
 	}
 }
