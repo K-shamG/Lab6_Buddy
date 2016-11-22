@@ -1,15 +1,12 @@
+import java.io.Serializable;
 
-
-public class BuddyInfo {
+public class BuddyInfo implements Serializable{
+	private static final long serialVersionUID = 4746560110855185031L;
 	private String name, address;
-	private int phoneNumber;
+	private String phoneNumber;
 	private int age;
-	
-	public BuddyInfo() {
-		
-	}
-	
-	public BuddyInfo(String name, String address, int num) {
+
+	public BuddyInfo(String name, String address, String num) {
 		if(name == null || address == null) {
 			throw new NullPointerException("Input(s) cannot be done");
 		}
@@ -34,7 +31,7 @@ public class BuddyInfo {
 		return address;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	
@@ -55,17 +52,15 @@ public class BuddyInfo {
 	}
 	
 	public static BuddyInfo imporT(String str) {
-		//BuddyInfo buddy = new BuddyInfo(); 
 		String[] parts = str.split("\\$");
-
-		return new BuddyInfo(parts[0], parts[1], Integer.parseInt(parts[2]));
+		return new BuddyInfo(parts[0], parts[1], parts[2]);
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Hello world!");
 		
-		BuddyInfo buddy = new BuddyInfo("Kshamina", "111 address", 789333444);
+		BuddyInfo buddy = new BuddyInfo("Kshamina", "111 address", "789333444");
 		System.out.println(buddy.toString());
 	}
 
@@ -73,8 +68,17 @@ public class BuddyInfo {
 		this.address = address;
 	}
 
-	private void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	private void setPhoneNumber(String num) {
+		this.phoneNumber = num;
+	}
+	
+	public boolean equals(Object o) {
+		if(this == o) return true;
+		if((o == null) || !(o instanceof BuddyInfo)) return false;
+		
+		BuddyInfo b = (BuddyInfo) o;
+		
+		return(this.name.equals(b.getName()) && this.address.equals(b.getAddress()) && this.phoneNumber.equals(b.getPhoneNumber()));
 	}
 
 }

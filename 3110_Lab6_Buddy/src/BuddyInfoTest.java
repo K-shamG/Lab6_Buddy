@@ -8,7 +8,7 @@ public class BuddyInfoTest {
 	
 	private String name = "test";
 	private String address = "testAddress";
-	private int phonenumber = 5555555;
+	private String phonenumber = "5555555";
 
 	@Before 
 	public void setup() {
