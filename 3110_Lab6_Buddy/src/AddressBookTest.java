@@ -96,5 +96,13 @@ public class AddressBookTest {
 		assertTrue(addressBook.equals(book));
 
 	}
+	
+	@Test 
+	public void testImportExportXML() throws Exception {
+		addressBook.toXML("test.xml");
+		AddressBook book = addressBook.importFromXML("test.xml");
+
+		assertTrue(addressBook.equals(book));
+	}
 
 }
